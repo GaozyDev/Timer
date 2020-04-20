@@ -1,8 +1,10 @@
-package com.gzy.timer;
+package com.gzy.timer.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.gzy.timer.R;
 
 public class MainActivity extends AppCompatActivity {
 
