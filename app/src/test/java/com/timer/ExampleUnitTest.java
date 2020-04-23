@@ -1,4 +1,4 @@
-package com.gzy.timer;
+package com.timer;
 
 import org.junit.Test;
 
