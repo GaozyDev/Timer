@@ -1,25 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="220dp"
+    android:background="#e1e4e5"
     android:padding="@dimen/activity_horizontal_margin"
     tools:context=".ui.login.LoginActivity">
 
-    <Button
-        android:id="@+id/login"
+    <ImageView
+        android:id="@+id/login_app_icon_iv"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:contentDescription="@string/app_name"
+        android:enabled="false"
+        android:src="@drawable/ic_launcher_temp" />
+
+    <TextView
+        android:id="@+id/login_app_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:enabled="false"
-        android:text="@string/action_sign_in" />
+        android:layout_below="@id/login_app_icon_iv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/prompt_my_timer"
+        android:textColor="#181818"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_app_name_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/prompt_countdown"
+        android:textColor="#181818"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/shape_rectangle_corners_20_solid_54b4ef"
+        android:text="@string/action_qq_login"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/login_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/login_btn"
+        android:layout_alignBottom="@id/login_btn"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="-25dp"
+        android:text="@string/action_feedback"
+        android:textColor="#2946d7"
+        android:textSize="12sp" />
 
     <ProgressBar
-        android:id="@+id/loading"
+        android:id="@+id/login_loading_pb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="100dp"
         android:visibility="gone" />
-</FrameLayout>
+</RelativeLayout>

@@ -2,8 +2,11 @@ package com.timer.ui.login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -16,8 +19,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.timer.MainActivity;
 import com.timer.R;
+import com.timer.ui.base.BaseActivity;
 
-public class LoginActivity extends AppCompatActivity {
+/**
+ * 登录页
+ */
+public class LoginActivity extends BaseActivity {
 
     private LoginViewModel loginViewModel;
 
@@ -28,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        final Button loginButton = findViewById(R.id.login_btn);
+        final ProgressBar loadingProgressBar = findViewById(R.id.login_loading_pb);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -77,8 +84,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "welcome", Toast.LENGTH_LONG).show();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

@@ -7,7 +7,7 @@
     tools:context="com.timer.MainActivity">
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
