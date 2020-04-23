@@ -1,4 +1,4 @@
-package com.gzy.timer.ui.login;
+package com.timer.ui.login;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.gzy.timer.R;
-import com.gzy.timer.ui.main.MainActivity;
+import com.timer.MainActivity;
+import com.timer.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,6 +1,6 @@
-package com.gzy.timer.data;
+package com.timer.data;
 
-import com.gzy.timer.data.model.LoggedInUser;
+import com.timer.data.model.LoggedInUser;
 
 /**
  * Class that requests authentication and user information from the remote data source and

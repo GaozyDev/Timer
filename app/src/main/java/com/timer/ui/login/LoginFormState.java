@@ -1,4 +1,4 @@
-package com.gzy.timer.ui.login;
+package com.timer.ui.login;
 
 import androidx.annotation.Nullable;
 

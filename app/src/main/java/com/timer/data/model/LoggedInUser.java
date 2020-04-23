@@ -1,4 +1,4 @@
-package com.gzy.timer.data.model;
+package com.timer.data.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

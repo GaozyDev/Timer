@@ -1,6 +1,6 @@
-package com.gzy.timer.data;
+package com.timer.data;
 
-import com.gzy.timer.data.model.LoggedInUser;
+import com.timer.data.model.LoggedInUser;
 
 import java.io.IOException;
 

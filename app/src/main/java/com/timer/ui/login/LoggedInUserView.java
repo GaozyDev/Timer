@@ -1,4 +1,4 @@
-package com.gzy.timer.ui.login;
+package com.timer.ui.login;
 
 /**
  * Class exposing authenticated user details to the UI.

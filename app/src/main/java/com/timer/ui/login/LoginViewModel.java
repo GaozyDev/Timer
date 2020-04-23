@@ -1,4 +1,4 @@
-package com.gzy.timer.ui.login;
+package com.timer.ui.login;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.gzy.timer.data.LoginRepository;
-import com.gzy.timer.data.Result;
-import com.gzy.timer.data.model.LoggedInUser;
-import com.gzy.timer.R;
+import com.timer.R;
+import com.timer.data.LoginRepository;
+import com.timer.data.Result;
+import com.timer.data.model.LoggedInUser;
 
 public class LoginViewModel extends ViewModel {
 
