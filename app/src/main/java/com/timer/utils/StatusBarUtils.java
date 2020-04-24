@@ -58,15 +58,10 @@ public class StatusBarUtils {
                 decorView.setSystemUiVisibility(systemUiVisibility & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             }
         } else {
-            switch (OSUtils.getRomType()) {
-                case MIUI:
-                    setMIUIDark(window, isDark);
-                    break;
-                case Flyme:
-                    setFlymeDark(window, isDark);
-                    break;
-                default:
-                    break;
+            if (RomUtil.isMiui()) {
+                setMIUIDark(window, isDark);
+            } else if (RomUtil.isFlyme()) {
+                setFlymeDark(window, isDark);
             }
         }
     }
