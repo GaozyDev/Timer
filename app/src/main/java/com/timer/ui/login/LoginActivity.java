@@ -6,16 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.timer.MainActivity;
 import com.timer.R;
 import com.timer.ui.base.BaseActivity;
+import com.timer.ui.main.MainActivity;
 
 /**
  * 登录页
@@ -34,39 +32,25 @@ public class LoginActivity extends BaseActivity {
         final Button loginButton = findViewById(R.id.login_btn);
         final ProgressBar loadingProgressBar = findViewById(R.id.login_loading_pb);
 
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
+        loginViewModel.getLoginFormState().observe(this, new Observer<Boolean>() {
             @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
+            public void onChanged(@Nullable Boolean loginFormState) {
                 if (loginFormState == null) {
                     return;
                 }
-                loginButton.setEnabled(loginFormState.isDataValid());
-                if (loginFormState.getUsernameError() != null) {
-                }
-                if (loginFormState.getPasswordError() != null) {
-                }
+                loginButton.setEnabled(loginFormState);
             }
         });
 
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
+        loginViewModel.getLoginResult().observe(this, new Observer<Boolean>() {
             @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
+            public void onChanged(@Nullable Boolean loginResult) {
                 if (loginResult == null) {
                     return;
                 }
                 loadingProgressBar.setVisibility(View.GONE);
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
-                }
                 setResult(Activity.RESULT_OK);
-
-                //Complete and destroy login activity once successful
-
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
                 finish();
             }
         });
@@ -78,13 +62,5 @@ public class LoginActivity extends BaseActivity {
                 loginViewModel.login("", "");
             }
         });
-    }
-
-    private void updateUiWithUser(LoggedInUserView model) {
-        Toast.makeText(getApplicationContext(), "welcome", Toast.LENGTH_LONG).show();
-    }
-
-    private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 }

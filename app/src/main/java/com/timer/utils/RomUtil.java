@@ -2,19 +2,16 @@ package com.timer.utils;
 
 import android.os.Build;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Created by HaiyuKing
- * Used 判断手机ROM,检测ROM是MIUI、EMUI还是Flyme
+ * 检测ROM是MIUI、EMUI还是Flyme
  * 参考资料：https://www.jianshu.com/p/ba9347a5a05a
  */
 public class RomUtil {
-    private static final String TAG = "Rom";
 
     private static final String ROM_MIUI = "MIUI";
     private static final String ROM_EMUI = "EMUI";
@@ -34,36 +31,51 @@ public class RomUtil {
     private static String sName;
     private static String sVersion;
 
-    //华为
+    /**
+     * 华为
+     */
     public static boolean isEmui() {
         return check(ROM_EMUI);
     }
 
-    //小米
+    /**
+     * 小米
+     */
     public static boolean isMiui() {
         return check(ROM_MIUI);
     }
 
-    //vivo
+    /**
+     * vivo
+     */
     public static boolean isVivo() {
         return check(ROM_VIVO);
     }
 
-    //oppo
+    /**
+     * oppo
+     */
     public static boolean isOppo() {
         return check(ROM_OPPO);
     }
 
-    //魅族
+    /**
+     * 魅族
+     */
     public static boolean isFlyme() {
         return check(ROM_FLYME);
     }
 
-    //360手机
+    /**
+     * 360
+     */
     public static boolean is360() {
         return check(ROM_QIKU) || check(ROM_360);
     }
 
+    /**
+     * 锤子
+     */
     public static boolean isSmartisan() {
         return check(ROM_SMARTISAN);
     }
@@ -117,9 +129,8 @@ public class RomUtil {
             input = new BufferedReader(new InputStreamReader(p.getInputStream()), 1024);
             line = input.readLine();
             input.close();
-        } catch (IOException ex) {
-            Log.e(TAG, "Unable to read prop " + name, ex);
-            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             if (input != null) {
                 try {

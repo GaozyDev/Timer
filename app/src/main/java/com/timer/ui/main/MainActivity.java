@@ -1,4 +1,4 @@
-package com.timer;
+package com.timer.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
+import com.timer.R;
 import com.timer.ui.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
