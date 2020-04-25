@@ -63,12 +63,13 @@ public class LoginActivity extends BaseActivity {
                 .get(LoginViewModel.class);
 
         loginViewModel.getLoginResult().observe(this, loginResult -> {
-            setLoginStatus(loginResult != null);
-            if (loginResult != null) {
-                loginSuccess(loginResult.getToken());
+            boolean success = loginResult.getSuccess() != null;
+            setLoginStatus(!success);
+            if (success) {
+                loginSuccess(loginResult.getSuccess());
             } else {
                 mTencent.logout(LoginActivity.this);
-                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, loginResult.getError(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -88,11 +89,11 @@ public class LoginActivity extends BaseActivity {
     private void initViewClickListener() {
         mLoginBtn.setOnClickListener(v -> {
             setLoginStatus(true);
-            mTencent.login(LoginActivity.this, "all", iUiListener);
+            mTencent.login(LoginActivity.this, "all", mIUiListener);
         });
     }
 
-    private IUiListener iUiListener = new IUiListener() {
+    private IUiListener mIUiListener = new IUiListener() {
 
         @Override
         public void onComplete(Object object) {
@@ -141,7 +142,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.REQUEST_LOGIN) {
-            Tencent.onActivityResultData(requestCode, resultCode, data, iUiListener);
+            Tencent.onActivityResultData(requestCode, resultCode, data, mIUiListener);
         }
 
         super.onActivityResult(requestCode, resultCode, data);

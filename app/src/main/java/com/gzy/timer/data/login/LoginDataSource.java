@@ -24,31 +24,40 @@ public class LoginDataSource {
         QQModel qqModel = new QQModel(openId, token);
         LoginModel<QQModel> loginModel = new LoginModel<>(1, qqModel);
         Call<RspModel<LoginRspModel>> call = service.login(loginModel);
-        call.enqueue(new Callback<RspModel<LoginRspModel>>() {
-            @Override
-            public void onResponse(@NotNull Call<RspModel<LoginRspModel>> call,
-                                   @NotNull Response<RspModel<LoginRspModel>> response) {
-                RspModel<LoginRspModel> rspModel = response.body();
-                if (rspModel != null) {
-                    if (rspModel.success()) {
-                        LoginRspModel loginRspModel = rspModel.getResult();
-                        callback.onDataLoaded(loginRspModel);
-                    } else {
-                        Factory.decodeRspCode(rspModel, callback);
-                    }
-                } else {
-                    callback.onDataNotAvailable(R.string.app_name);
-                }
-            }
-
-            @Override
-            public void onFailure(@NotNull Call<RspModel<LoginRspModel>> call, @NotNull Throwable t) {
-                callback.onDataNotAvailable(R.string.app_name);
-            }
-        });
+        call.enqueue(new LoginRspCallback(callback));
     }
 
     void logout() {
 
+    }
+
+    private static class LoginRspCallback implements Callback<RspModel<LoginRspModel>> {
+
+        final DataSource.Callback<LoginRspModel> callback;
+
+        LoginRspCallback(DataSource.Callback<LoginRspModel> callback) {
+            this.callback = callback;
+        }
+
+        @Override
+        public void onResponse(@NotNull Call<RspModel<LoginRspModel>> call,
+                               @NotNull Response<RspModel<LoginRspModel>> response) {
+            RspModel<LoginRspModel> rspModel = response.body();
+            if (rspModel != null) {
+                if (rspModel.success()) {
+                    LoginRspModel loginRspModel = rspModel.getResult();
+                    callback.onDataLoaded(loginRspModel);
+                } else {
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            } else {
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
+        }
+
+        @Override
+        public void onFailure(@NotNull Call<RspModel<LoginRspModel>> call, @NotNull Throwable t) {
+            callback.onDataNotAvailable(R.string.data_network_error);
+        }
     }
 }

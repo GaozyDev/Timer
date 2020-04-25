@@ -8,31 +8,30 @@ import com.gzy.timer.data.login.DataSource;
 import com.gzy.timer.data.login.LoginRepository;
 import com.gzy.timer.net.model.login.LoginRspModel;
 
-public class LoginViewModel extends ViewModel {
+public class LoginViewModel extends ViewModel implements DataSource.Callback<LoginRspModel> {
 
-    private MutableLiveData<LoginRspModel> loginResult = new MutableLiveData<>();
+    private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
     private LoginRepository loginRepository;
 
     LoginViewModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
 
-    LiveData<LoginRspModel> getLoginResult() {
+    LiveData<LoginResult> getLoginResult() {
         return loginResult;
     }
 
     public void login(String openId, String token) {
-        loginRepository.login(openId, token, new DataSource.Callback<LoginRspModel>() {
+        loginRepository.login(openId, token, this);
+    }
 
-            @Override
-            public void onDataNotAvailable(int strRes) {
-                loginResult.setValue(null);
-            }
+    @Override
+    public void onDataLoaded(LoginRspModel loginRspModel) {
+        loginResult.setValue(new LoginResult(loginRspModel.getToken()));
+    }
 
-            @Override
-            public void onDataLoaded(LoginRspModel loginRspModel) {
-                loginResult.setValue(loginRspModel);
-            }
-        });
+    @Override
+    public void onDataNotAvailable(int strRes) {
+        loginResult.setValue(new LoginResult(strRes));
     }
 }
