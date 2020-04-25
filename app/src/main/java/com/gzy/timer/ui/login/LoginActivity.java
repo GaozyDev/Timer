@@ -64,7 +64,7 @@ public class LoginActivity extends BaseActivity {
 
         loginViewModel.getLoginResult().observe(this, loginResult -> {
             boolean success = loginResult.getSuccess() != null;
-            setLoginStatus(!success);
+            setLoginStatus(success);
             if (success) {
                 loginSuccess(loginResult.getSuccess());
             } else {
