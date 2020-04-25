@@ -1,4 +1,4 @@
-package com.timer.utils;
+package com.gzy.timer.utils;
 
 import android.os.Build;
 import android.text.TextUtils;

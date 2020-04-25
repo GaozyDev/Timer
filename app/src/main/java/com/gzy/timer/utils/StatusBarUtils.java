@@ -1,4 +1,4 @@
-package com.timer.utils;
+package com.gzy.timer.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,9 +13,6 @@ import java.lang.reflect.Method;
 
 /**
  * 沉浸式状态栏工具
- *
- * @author JimmySun
- * @since 2019-08-23
  */
 public class StatusBarUtils {
 
@@ -26,7 +23,7 @@ public class StatusBarUtils {
      */
     public static void setTransparent(Activity activity) {
         Window window = activity.getWindow();
-        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         window.setStatusBarColor(Color.TRANSPARENT);
     }
 

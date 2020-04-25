@@ -4,9 +4,9 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e1e4e5"
+    android:background="@color/colorWhite"
     android:padding="@dimen/activity_horizontal_margin"
-    tools:context=".ui.login.LoginActivity">
+    tools:context="com.gzy.timer.ui.login.LoginActivity">
 
     <ImageView
         android:id="@+id/login_app_icon_iv"

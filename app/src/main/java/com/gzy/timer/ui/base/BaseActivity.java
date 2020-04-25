@@ -1,4 +1,4 @@
-package com.timer.ui.base;
+package com.gzy.timer.ui.base;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.timer.utils.StatusBarUtils;
+import com.gzy.timer.utils.StatusBarUtils;
 
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {

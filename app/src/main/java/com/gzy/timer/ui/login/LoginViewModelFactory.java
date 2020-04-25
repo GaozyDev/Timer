@@ -1,11 +1,11 @@
-package com.timer.ui.login;
+package com.gzy.timer.ui.login;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.timer.data.LoginDataSource;
-import com.timer.data.LoginRepository;
+import com.gzy.timer.data.login.LoginDataSource;
+import com.gzy.timer.data.login.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

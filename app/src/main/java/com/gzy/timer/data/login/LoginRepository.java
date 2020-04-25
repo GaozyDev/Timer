@@ -1,9 +1,7 @@
-package com.timer.data;
+package com.gzy.timer.data.login;
 
-/**
- * Class that requests authentication and user information from the remote data source and
- * maintains an in-memory cache of login status and user credentials information.
- */
+import com.gzy.timer.net.model.login.LoginRspModel;
+
 public class LoginRepository {
 
     private static volatile LoginRepository instance;
@@ -21,11 +19,11 @@ public class LoginRepository {
         return instance;
     }
 
-    public void logout() {
-        dataSource.logout();
+    public void login(String openId, String token, DataSource.Callback<LoginRspModel> callback) {
+        dataSource.login(openId, token, callback);
     }
 
-    public boolean login(String username, String password) {
-        return dataSource.login(username, password);
+    public void logout() {
+        dataSource.logout();
     }
 }
