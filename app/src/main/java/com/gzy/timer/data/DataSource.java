@@ -1,6 +1,4 @@
-package com.gzy.timer.data.login;
-
-import androidx.annotation.StringRes;
+package com.gzy.timer.data;
 
 /**
  * Created by Sunny on 2017/5/26.
@@ -22,6 +20,6 @@ public interface DataSource {
     }
 
     interface FailedCallback {
-        void onDataNotAvailable(@StringRes int strRes);
+        void onDataNotAvailable(String error);
     }
 }

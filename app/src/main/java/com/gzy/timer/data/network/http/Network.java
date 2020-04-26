@@ -1,4 +1,4 @@
-package com.gzy.timer.net.http;
+package com.gzy.timer.data.network.http;
 
 import com.gzy.timer.Constant;
 import com.gzy.timer.Factory;

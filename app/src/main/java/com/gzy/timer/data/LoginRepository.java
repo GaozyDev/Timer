@@ -1,6 +1,7 @@
-package com.gzy.timer.data.login;
+package com.gzy.timer.data;
 
-import com.gzy.timer.net.model.login.LoginRspModel;
+import com.gzy.timer.data.model.login.LoginRspModel;
+import com.gzy.timer.data.network.LoginDataSource;
 
 public class LoginRepository {
 

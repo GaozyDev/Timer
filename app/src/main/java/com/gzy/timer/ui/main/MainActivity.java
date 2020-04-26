@@ -3,7 +3,7 @@ package com.gzy.timer.ui.main;
 import android.os.Bundle;
 
 import com.gzy.timer.R;
-import com.gzy.timer.ui.base.BaseActivity;
+import com.gzy.timer.ui.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 

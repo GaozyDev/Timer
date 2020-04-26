@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.gzy.timer.data.login.LoginDataSource;
-import com.gzy.timer.data.login.LoginRepository;
+import com.gzy.timer.data.network.LoginDataSource;
+import com.gzy.timer.data.LoginRepository;
 
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
 

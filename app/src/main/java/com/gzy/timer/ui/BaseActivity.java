@@ -1,4 +1,4 @@
-package com.gzy.timer.ui.base;
+package com.gzy.timer.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

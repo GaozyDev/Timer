@@ -1,11 +1,7 @@
 package com.gzy.timer;
 
-import androidx.annotation.StringRes;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.gzy.timer.data.login.DataSource;
-import com.gzy.timer.net.RspModel;
 
 public class Factory {
 
@@ -30,38 +26,5 @@ public class Factory {
                 // 设置时间格式
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
                 .create();
-    }
-
-    /**
-     * 进行错误Code的解析，
-     * 把网络返回的Code值进行统一的规划并返回为一个String资源
-     *
-     * @param model    RspModel
-     * @param callback DataSource.FailedCallback 用于返回一个错误的资源Id
-     */
-    public static void decodeRspCode(RspModel model, DataSource.FailedCallback callback) {
-        if (model == null)
-            return;
-
-        // 进行Code区分
-        switch (model.getCode()) {
-            case RspModel.SUCCEED:
-                return;
-            case RspModel.ERROR_SERVICE:
-                decodeRspCode(R.string.app_name, callback);
-                break;
-            case RspModel.ERROR_ACCOUNT_LOGIN:
-                decodeRspCode(R.string.app_name, callback);
-                break;
-            default:
-                decodeRspCode(R.string.app_name, callback);
-                break;
-        }
-    }
-
-    private static void decodeRspCode(@StringRes final int resId,
-                                      final DataSource.FailedCallback callback) {
-        if (callback != null)
-            callback.onDataNotAvailable(resId);
     }
 }

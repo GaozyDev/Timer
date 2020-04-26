@@ -1,8 +1,8 @@
-package com.gzy.timer.net.http;
+package com.gzy.timer.data.network.http;
 
-import com.gzy.timer.net.RspModel;
-import com.gzy.timer.net.model.login.LoginModel;
-import com.gzy.timer.net.model.login.LoginRspModel;
+import com.gzy.timer.data.network.RspModel;
+import com.gzy.timer.data.model.login.LoginModel;
+import com.gzy.timer.data.model.login.LoginRspModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

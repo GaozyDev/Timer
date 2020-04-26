@@ -1,4 +1,4 @@
-package com.gzy.timer.net.model.login;
+package com.gzy.timer.data.model.login;
 
 /**
  * QQ 登录

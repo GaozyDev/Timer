@@ -1,4 +1,4 @@
-package com.gzy.timer.net;
+package com.gzy.timer.data.network;
 
 public class RspModel<T> {
 

@@ -1,15 +1,15 @@
-package com.gzy.timer.data.login;
+package com.gzy.timer.data.network;
 
 import androidx.annotation.NonNull;
 
-import com.gzy.timer.Factory;
+import com.gzy.timer.App;
 import com.gzy.timer.R;
-import com.gzy.timer.net.RspModel;
-import com.gzy.timer.net.http.Network;
-import com.gzy.timer.net.http.RemoteService;
-import com.gzy.timer.net.model.login.LoginModel;
-import com.gzy.timer.net.model.login.LoginRspModel;
-import com.gzy.timer.net.model.login.QQModel;
+import com.gzy.timer.data.DataSource;
+import com.gzy.timer.data.model.login.LoginModel;
+import com.gzy.timer.data.model.login.LoginRspModel;
+import com.gzy.timer.data.model.login.QQModel;
+import com.gzy.timer.data.network.http.Network;
+import com.gzy.timer.data.network.http.RemoteService;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +27,7 @@ public class LoginDataSource {
         call.enqueue(new LoginRspCallback(callback));
     }
 
-    void logout() {
+    public void logout() {
 
     }
 
@@ -48,16 +48,16 @@ public class LoginDataSource {
                     LoginRspModel loginRspModel = rspModel.getResult();
                     callback.onDataLoaded(loginRspModel);
                 } else {
-                    Factory.decodeRspCode(rspModel, callback);
+                    callback.onDataNotAvailable(rspModel.getMessage());
                 }
             } else {
-                callback.onDataNotAvailable(R.string.data_network_error);
+                callback.onDataNotAvailable(App.getInstance().getString(R.string.data_rsp_error_service));
             }
         }
 
         @Override
         public void onFailure(@NotNull Call<RspModel<LoginRspModel>> call, @NotNull Throwable t) {
-            callback.onDataNotAvailable(R.string.data_network_error);
+            callback.onDataNotAvailable(App.getInstance().getString(R.string.data_rsp_error_service));
         }
     }
 }

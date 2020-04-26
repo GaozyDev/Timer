@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.gzy.timer.Constant;
 import com.gzy.timer.R;
-import com.gzy.timer.ui.base.BaseActivity;
+import com.gzy.timer.ui.BaseActivity;
 import com.gzy.timer.ui.main.MainActivity;
 import com.gzy.timer.utils.SpUtils;
 import com.tencent.connect.common.Constants;

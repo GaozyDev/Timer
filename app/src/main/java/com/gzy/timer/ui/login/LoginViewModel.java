@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.gzy.timer.data.login.DataSource;
-import com.gzy.timer.data.login.LoginRepository;
-import com.gzy.timer.net.model.login.LoginRspModel;
+import com.gzy.timer.data.DataSource;
+import com.gzy.timer.data.LoginRepository;
+import com.gzy.timer.data.model.login.LoginRspModel;
 
 public class LoginViewModel extends ViewModel implements DataSource.Callback<LoginRspModel> {
 
@@ -27,11 +27,11 @@ public class LoginViewModel extends ViewModel implements DataSource.Callback<Log
 
     @Override
     public void onDataLoaded(LoginRspModel loginRspModel) {
-        loginResult.setValue(new LoginResult(loginRspModel.getToken()));
+        loginResult.setValue(new LoginResult(loginRspModel.getToken(), null));
     }
 
     @Override
-    public void onDataNotAvailable(int strRes) {
-        loginResult.setValue(new LoginResult(strRes));
+    public void onDataNotAvailable(String error) {
+        loginResult.setValue(new LoginResult(null, error));
     }
 }
