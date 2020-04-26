@@ -42,38 +42,42 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/login_btn"
+    <FrameLayout
+        android:id="@+id/login_fl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="120dp"
-        android:background="@drawable/shape_rectangle_corners_20_solid_54b4ef"
-        android:text="@string/action_qq_login"
-        android:textColor="#ffffff"
-        android:textSize="16sp" />
+        android:layout_marginBottom="120dp">
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rectangle_corners_20_solid_54b4ef"
+            android:text="@string/action_qq_login"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+        <ProgressBar
+            android:id="@+id/login_loading_pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/login_feedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/login_btn"
-        android:layout_alignBottom="@id/login_btn"
+        android:layout_alignEnd="@id/login_fl"
+        android:layout_alignBottom="@id/login_fl"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="-25dp"
         android:text="@string/action_feedback"
         android:textColor="#2946d7"
         android:textSize="12sp" />
 
-    <ProgressBar
-        android:id="@+id/login_loading_pb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="100dp"
-        android:visibility="gone" />
 </RelativeLayout>
