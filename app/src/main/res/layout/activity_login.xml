@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    android:padding="@dimen/activity_horizontal_margin"
+    android:padding="@dimen/activity_content_margin"
     tools:context="com.gzy.timer.ui.login.LoginActivity">
 
     <ImageView
@@ -55,7 +55,7 @@
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_rectangle_corners_20_solid_54b4ef"
+            android:background="@drawable/shape_rectangle_corners_25_solid_54b4ef"
             android:text="@string/action_qq_login"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />

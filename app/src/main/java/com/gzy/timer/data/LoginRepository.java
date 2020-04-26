@@ -7,10 +7,10 @@ public class LoginRepository {
 
     private static volatile LoginRepository instance;
 
-    private LoginDataSource dataSource;
+    private LoginDataSource mDataSource;
 
     private LoginRepository(LoginDataSource dataSource) {
-        this.dataSource = dataSource;
+        this.mDataSource = dataSource;
     }
 
     public static LoginRepository getInstance(LoginDataSource dataSource) {
@@ -21,10 +21,10 @@ public class LoginRepository {
     }
 
     public void login(String openId, String token, DataSource.Callback<LoginRspModel> callback) {
-        dataSource.login(openId, token, callback);
+        mDataSource.login(openId, token, callback);
     }
 
     public void logout() {
-        dataSource.logout();
+        mDataSource.logout();
     }
 }

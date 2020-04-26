@@ -31,7 +31,7 @@ public class LoginActivity extends BaseActivity {
 
     private ProgressBar mLoadingPb;
 
-    private LoginViewModel loginViewModel;
+    private LoginViewModel mLoginViewModel;
 
     private Tencent mTencent;
 
@@ -59,10 +59,10 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initViewModel() {
-        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
+        mLoginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        loginViewModel.getLoginResult().observe(this, loginResult -> {
+        mLoginViewModel.getLoginResult().observe(this, loginResult -> {
             boolean success = loginResult.getSuccess() != null;
             setLoginStatus(success);
             if (success) {
@@ -111,7 +111,7 @@ public class LoginActivity extends BaseActivity {
                 mExpiresIn = jsonObject.getString(Constants.PARAM_EXPIRES_IN);
                 if (!TextUtils.isEmpty(mOpenId) && !TextUtils.isEmpty(mExpiresIn)
                         && !TextUtils.isEmpty(mAccessToken)) {
-                    loginViewModel.login(mOpenId, mAccessToken);
+                    mLoginViewModel.login(mOpenId, mAccessToken);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
