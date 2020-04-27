@@ -11,22 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gzy.timer.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TimerAdapter extends RecyclerView.Adapter<TimerAdapter.ViewHolder> {
 
     private Context mContext;
 
-    private List<String> stringList = new ArrayList<>();
+    private List<String> mStringList;
 
-    public TimerAdapter(Context context) {
+    public TimerAdapter(Context context, List<String> stringList) {
         this.mContext = context;
-    }
-
-    public void setStringList(List<String> list) {
-        stringList.addAll(list);
-        notifyDataSetChanged();
+        this.mStringList = stringList;
     }
 
     @NonNull
@@ -38,12 +33,12 @@ public class TimerAdapter extends RecyclerView.Adapter<TimerAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(stringList.get(position));
+        holder.textView.setText(mStringList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return stringList.size();
+        return mStringList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -46,11 +46,13 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mLoginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
+                .get(LoginViewModel.class);
         mTencent = Tencent.createInstance(Constant.App.QQ_APP_ID, this.getApplicationContext());
 
         initView();
-        initViewModel();
-        initViewClickListener();
+        observeViewModel();
+        initClickListener();
     }
 
     private void initView() {
@@ -58,10 +60,7 @@ public class LoginActivity extends BaseActivity {
         mLoadingPb = findViewById(R.id.login_loading_pb);
     }
 
-    private void initViewModel() {
-        mLoginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
-                .get(LoginViewModel.class);
-
+    private void observeViewModel() {
         mLoginViewModel.getLoginResult().observe(this, loginResult -> {
             boolean success = loginResult.getSuccess() != null;
             setLoginStatus(success);
@@ -86,7 +85,7 @@ public class LoginActivity extends BaseActivity {
         finish();
     }
 
-    private void initViewClickListener() {
+    private void initClickListener() {
         mLoginBtn.setOnClickListener(v -> {
             setLoginStatus(true);
             mTencent.login(LoginActivity.this, "all", mIUiListener);

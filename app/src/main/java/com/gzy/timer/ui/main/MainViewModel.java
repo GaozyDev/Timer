@@ -6,21 +6,23 @@ import androidx.lifecycle.ViewModel;
 import com.gzy.timer.data.DataSource;
 import com.gzy.timer.data.MainRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewModel extends ViewModel implements DataSource.Callback<List<String>> {
 
     private MainRepository mMainRepository;
 
-    private MutableLiveData<List<String>> stringList = new MutableLiveData<>();
+    List<String> mStringList = new ArrayList<>();
+
+    private MutableLiveData<Integer> mDataChange = new MutableLiveData<>();
 
     MainViewModel(MainRepository mainRepository) {
         this.mMainRepository = mainRepository;
-        mMainRepository.getMoreData(0, this);
     }
 
-    MutableLiveData<List<String>> getStringList() {
-        return stringList;
+    MutableLiveData<Integer> getDataChange() {
+        return mDataChange;
     }
 
     void loadMoreData(int count){
@@ -29,7 +31,8 @@ public class MainViewModel extends ViewModel implements DataSource.Callback<List
 
     @Override
     public void onDataLoaded(List<String> list) {
-        stringList.setValue(list);
+        mStringList.addAll(list);
+        mDataChange.setValue(mStringList.size());
     }
 
     @Override

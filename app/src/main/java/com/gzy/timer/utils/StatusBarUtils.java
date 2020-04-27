@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * 沉浸式状态栏工具
+ * 透明状态栏工具
  */
 public class StatusBarUtils {
 

@@ -23,24 +23,28 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         StatusBarUtils.setTextColor(this, true);
 
+        mMainViewModel = ViewModelProviders.of(this, new MainViewModelFactory())
+                .get(MainViewModel.class);
+
         initView();
-        initViewModel();
+        observeViewModel();
+        initClickListener();
     }
 
     private void initView() {
         RecyclerView recyclerView = findViewById(R.id.main_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(mTimerAdapter = new TimerAdapter(this));
+        mTimerAdapter = new TimerAdapter(this, mMainViewModel.mStringList);
+        recyclerView.setAdapter(mTimerAdapter);
+    }
 
+    private void initClickListener() {
         findViewById(R.id.add).setOnClickListener(v
                 -> mMainViewModel.loadMoreData(mTimerAdapter.getItemCount()));
     }
 
-    private void initViewModel() {
-        mMainViewModel = ViewModelProviders.of(this, new MainViewModelFactory())
-                .get(MainViewModel.class);
-
-        mMainViewModel.getStringList().observe(this, stringList
-                -> mTimerAdapter.setStringList(stringList));
+    private void observeViewModel() {
+        mMainViewModel.getDataChange().observe(this, stringList
+                -> mTimerAdapter.notifyDataSetChanged());
     }
 }
